@@ -7,7 +7,7 @@ import {
   Button,
 } from 'react-native';
 
-import { NavigationContainer, useLinkProps } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from './src/Screens/Home';
 import MapData from './src/Screens/MapData';

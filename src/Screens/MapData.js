@@ -7,7 +7,6 @@ import {
     FlatList,
 } from 'react-native';
 
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Item = ({ title }) => (
     <View style={styles.item}>
@@ -15,42 +14,33 @@ const Item = ({ title }) => (
     </View>
 );
 
-const MapData = () => {
+const MapData = (props) => {
     const [table, setTable] = useState([]);
 
     useEffect(() => {
-        //Runs only on the first render
         getData();
     }, []);
     const renderItem = ({ item }) => (
-        <Item title={item.placeName} />
+        <Item title={item.LocationName} />
     );
 
 
 
     const getData = async () => {
+       // console.log(props,'kkkkk')
+        const {tableData} = props.route.params
 
-        try {
-
-            const value = await AsyncStorage.getItem('globalData');
-            if (value !== null) {
-                // We have data!!
-                let parsed = JSON.parse(value);
-                setTable(parsed)
-                console.log(table)
-            }
-        } catch (error) {
-            // Error retrieving data
-            console.log('value')
-        }
+        setTable(tableData)
 
     }
+console.log(table,'sdjf ljlkfdjlksjdlk')
+
     return (
         <View style={styles.MainContainer}>
             <FlatList
                 data={table}
                 renderItem={renderItem}
-                keyExtractor={item => item.placeId}
+               
 
             ></FlatList>
         </View>

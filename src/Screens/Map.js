@@ -47,7 +47,7 @@ const Map = () => {
         {
           table.map(table => (
             <MapView.Marker
-              coordinate={{latitude: table.Latitude, longitude: table.Longitude}}
+              coordinate={{ latitude: table.Latitude, longitude: table.Longitude }}
               title={table.LocationName}
             />
           ))}
